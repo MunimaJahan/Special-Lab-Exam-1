@@ -55,28 +55,28 @@ Here's an example of the use of a Mini Super Store:
 
 ### Details
 
-* The `Author` class needs to only hold the author name. It should have:
+* The `Category` class needs to only hold the category name. It should have:
    * A constructor which takes the name as a string.
    * An appropriately named getter 
    
 * The `Item` class needs to track the item name, category (like: dairy,produce etc.), unit price and an itemcode. This class needs:
-   * A constructor which takes the itemcode (int), name (String), category (Category) and unitprice.
+   * A constructor which takes the itemcode (int), name (String), category (Category) and unitprice (double).
    * Appropriately named getters for all.
    
-* The borrower class needs a name and and id as well as a list of books the borrower has borrowed. The class needs:
-   * A constructor which takes the borrower's name and id. It should also initialize the list of books to be empty. 
-   *  Appropriately named getters for each of these
-   * A method called borrowBook, which takes a book and adds it to the borrower's list.
-   * A method called returnBook, which takes a book and removes it from the borrower's list.
-   * A method called getBooks, which returns the list of books the borrower currently has borrowed.
-   * A method called getAuthors, which returns a list of authors of the books the borrower currently has borrowed.
-   *A method called borrowedBookString, which returns a string with the borrower's name on one line and then each book they have borrowed one-per-line on the lines that follow.
-   *A method called borrowedAuthorString, which returns a string with the borrower's name on one line and then each author they have borrowed one-per-line on the lines that follow.
+* The `Customer` class needs a *name*, *id* and a *cart* that stores the list of items the customer is going to buy. The class needs:
+   * A constructor which takes the customer's name and id. It should also initialize the cart to be empty. 
+   * Appropriately named getters for each of these
+   * A method called addItem, which takes an item and adds it to the customers's cart.
+   * A method called returnItem, which takes an item and removes it from the customer's cart.
+   * A method called getCategories, which returns the list of categories of items the customer currently has in the cart.
+   * A method called getItems, which returns a list of items the customer currently has in the cart.
+   * A method called getInvoiceString, which returns a string with the customer's name on one line and then for each item in the cart the item name and the unit price seperated by '->' one-per-line on the lines that follow.
+   * A method called itemCategoryString, which returns a string with the customer's name on one line and then each category they have bought one-per-line on the lines that follow.
    
    
 ### Tests
 
-Tests have been provided for many methods, but you need to add tests to see that the getBooks() and getAuthors() methods of `Borrower` are implemented correctly.
+Tests have been provided for many methods, but you need to add tests to see that the getItems() and getCategories() methods of `Customer` are implemented correctly.
 
 ### NOTES
 
