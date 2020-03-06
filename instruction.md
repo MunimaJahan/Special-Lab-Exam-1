@@ -10,46 +10,91 @@ The rubric for this quiz is provided at the bottom of this document.
 
 A  mini super store requires a software to keep track of items available in the store and the invoice for a customer who is buying a 
 list of items from the store.
-To manage this you'll have to make a class to define information about a mini super store `Customer` and to allow them to buy 
-different items and produce the invoice for the customer. 
+To manage this you'll have to make a program that keeps information about the `Customer` and to allow them to buy 
+different items from the store and prepare the invoice for the customer. 
 Additionally we would like to have a report of all the types of items a customer has bought.
 
-You need to write tests to show that your list of different item types and the invoice for each customer is correct.
+You need to write tests to show that your list of different categries for items and the invoice for each customer is correct.
 
 ### Example
 
-Here's an example of the use of a Mini Super Store:
+Here's an example of the use of the Mini Super Store:
 
 ```java
-	Item anitem = new Item("Milk","Dairy",5.45);
-  Item anitem = new Item("Carrot","Produce",1.45);
-	//Invoice i1 = new Book("A First Book", "100", aA);
-	Customer c1 = new Customer("Alen", 1001);
 	
-	c1.addItemtoCart(anitem);
+package spLabExam;
+
+public class displayMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Category aA = new Category("Dairy");
+		Category aB = new Category("Produced");
+		
+		Item b1 = new Item("Milk", "100", aA,10);
+		Item b2 = new Item("Cheese", "101", aA, 11);
+		Item b3 = new Item("Butter", "102", aA, 12);
+		Item b4 = new Item("Carrot", "200", aB,1.2);
+		Item b5 = new Item("Spinach", "201", aB, 2.3);
+		
+		
+		Customer c1 = new Customer("Alice", 1001);
+		Customer c2 = new Customer("Bob", 1002);
+		
+		c1.addItem(b1);
+		c1.addItem(b2);
+		c1.addItem(b3);
+		
+		c2.addItem(b1);
+		c2.addItem(b4);
+		
+		c1.removeItem(b1);
+		c1.addItem(b5);
+		
+		System.out.println(c1.getInvoice());
+				
+		System.out.println(c1.boughtCategoryString());
+		
+		System.out.println(c2.getInvoice());
+		System.out.println(c2.boughtCategoryString());
+		
 	
-	System.out.println(c1.printInvoice());
-	// lists "Milk"----->5.45
-            "Carrot"---->1.45
-            Total:------->6.90
-  
-	System.out.println(c1.authorString());
-	// lists "A. Author"
+	}
 	
-	c1.returnBook(b1);
-	System.out.println(c1.borrowedBookString());
-	// lists nothing
-	System.out.println(c1.authorString());
-	// lists nothing
 	
+}
+//May generate an ouput like this
+The invoice for Alice
+	Dairy
+		Cheese		11.0
+		Butter		12.0
+	Produced
+		Spinach		2.3
+Total= 25.3
+
+Alice
+	Dairy
+	Produced
+
+The invoice for Bob
+	Dairy
+		Milk		10.0
+	Produced
+		Carrot		1.2
+Total= 11.2
+
+Bob
+	Dairy
+	Produced
+
 	
 
 ```
 
 ### Hints
 
-- Focus on the requirements of the data structures first and then on the algorithms to manage the items and categories.
-- You still have not been provided with a Llama class, don't panic.
+- Focus on the requirements of the data structures first and then on the algorithms to manage the cart and invoice.
 - You *have* been provided with a main class, which provides some helpful functions.
 - Remember to check the test code to see what names are appropriate for the methods below.
 
@@ -59,24 +104,29 @@ Here's an example of the use of a Mini Super Store:
    * A constructor which takes the name as a string.
    * An appropriately named getter 
    
-* The `Item` class needs to track the item name, category (like: dairy,produce etc.), unit price and an itemcode. This class needs:
-   * A constructor which takes the itemcode (int), name (String), category (Category) and unitprice (double).
+* The `Item` class needs to track the item name, category (like: dairy, produced etc.), unit price and an itemcode. This class needs:
+   * A constructor which takes the name (String), itemcode (String), category (Category) and unitprice (double) in this given order.
    * Appropriately named getters for all.
    
 * The `Customer` class needs a *name*, *id* and a *cart* that stores the list of items the customer is going to buy. The class needs:
-   * A constructor which takes the customer's name and id. It should also initialize the cart to be empty. 
-   * Appropriately named getters for each of these
+   * A constructor which takes the customer's name (String) and id (int). It should also initialize the cart to be empty. 
+   * Appropriately named getters for each of the variable.
    * A method called addItem, which takes an item and adds it to the customers's cart.
    * A method called returnItem, which takes an item and removes it from the customer's cart.
    * A method called getCategories, which returns the list of categories of items the customer currently has in the cart.
    * A method called getItems, which returns a list of items the customer currently has in the cart.
-   * A method called getInvoiceString, which returns a string with the customer's name on one line and then for each item in the cart the item name and the unit price seperated by '->' one-per-line on the lines that follow.
-   * A method called itemCategoryString, which returns a string with the customer's name on one line and then each category they have bought one-per-line on the lines that follow.
+   * A method called getInvoice, which returns a string with the customer's name and the list of items in the cart with their price under each category in a format like this:
+The invoice for <customer name>
+	<category 1>
+		<item 1>	<price 1>
+		<item 2>	<price 2>
+	Total =<total price> [as you can also see from the sample output at the begining]
+   * A method called boughtCategoryString, which returns a string with the customer's name on one line and then each category they have bought one-per-line on the lines that follow.
    
    
 ### Tests
 
-Tests have been provided for many methods, but you need to add tests to see that the getItems() and getCategories() methods of `Customer` are implemented correctly.
+Tests have been provided for many methods, but you need to add tests to see that the getInvoice() and getCategories() methods of `Customer` are implemented correctly.
 
 ### NOTES
 
@@ -87,8 +137,6 @@ Tests have been provided for many methods, but you need to add tests to see that
 ---
 
 ## Rubric
-
-**NOTE!: This is a practice lab exam, so no formal grade will be given (just a participation grade), but marks for the full lab exams will be given as below.**
 
 ### Grade: A range
 
