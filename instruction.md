@@ -11,7 +11,7 @@ The rubric for this quiz is provided at the bottom of this document.
 A  mini super store requires a software to keep track of items available in the store and the invoice for a customer who is buying a 
 list of items from the store.
 To manage this you'll have to make a program that keeps information about the `Customer` and to allow them to buy 
-different items from the store and prepare the invoice for the customer. 
+different `items` of different `categories` from the store and prepare the 'invoice' for the customer. 
 Additionally we would like to have a report of all the types of items a customer has bought.
 
 You need to write tests to show that your list of different categries for items and the invoice for each customer is correct.
