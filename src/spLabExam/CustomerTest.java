@@ -71,34 +71,6 @@ public class CustomerTest {
 	
 	@Test
 	public void testgetCategory() {
-		String name = "Name Name NameName";
-		int id = 4050;
-		Customer b = new Customer(name, id);
-		
-		String itemname = "Item Item Item";
-		String itemcode = "10001";
-		Category category = new Category("Name NameName");
-		Item Item = new Item(itemname, itemcode, category,1.1);
-				
-		String itemname2 = "Item Item";
-		String itemcode2 = "10002";
-		Item Item2 = new Item(itemname2, itemcode2, category,2.2);
-
-		String itemname3 = "Item ";
-		String itemcode3 = "10003";
-		Category category2 = new Category ("Namish Name");
-		Item Item3 = new Item(itemname3, itemcode3, category2, 3.3);
-		
-		b.addItem(Item);
-		b.addItem(Item2);
-		b.addItem(Item3);
-		
-		ArrayList<Category> expectedCategorys = 
-				new ArrayList<>();
-		expectedCategorys.add(category);
-		expectedCategorys.add(category2);
-		
-		assertEquals(expectedCategorys, b.getCategorys());
 		
 		
 	}
