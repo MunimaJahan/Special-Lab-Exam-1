@@ -24,7 +24,7 @@ Here's an example of the use of the Mini Super Store:
 	
 package spLabExam;
 
-public class displayMain {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -64,6 +64,8 @@ public class displayMain {
 	
 	
 }
+```
+```
 //May generate an ouput like this
 The invoice for Alice
 	Dairy
